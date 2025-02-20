@@ -1,11 +1,14 @@
 class Solution {
     public boolean solution(int x) {
-        String s = Integer.toString(x);
+        int num = x;
         int sum = 0;
-        for(int i = 0; i<s.length() ; i++){
-            sum += s.charAt(i) - '0';
+        while(true) {
+            sum += x % 10;
+            if( x < 10 ) break;
+            x/=10;
         }
-        if(x % sum == 0) return true;
+        
+        if((num % sum) == 0) return true;
         return false;
     }
 }
