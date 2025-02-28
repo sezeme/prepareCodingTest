@@ -1,14 +1,16 @@
 class Solution {
-    public String[] solution(int n, int[] arr1, int[] arr2) {
-        String[] answer = new String[n];
-        StringBuilder sb;
+  public String[] solution(int n, int[] arr1, int[] arr2) {
+      String[] answer = new String[n];
+      String temp;
 
-        for(int i =0 ;i < n; i++){
-            answer[i] = Integer.toBinaryString(arr1[i] | arr2[i]);
-            answer[i] = String.format("%" + n + "s", answer[i])
-                     .replace('1', '#')
-                     .replace('0', ' ');
-        }
-        return answer;
-    }
+      for(int i = 0 ; i < n ; i++){
+          temp = String.format("%16s", Integer.toBinaryString(arr1[i] | arr2[i]));
+          temp = temp.substring(temp.length() - n);
+          temp = temp.replaceAll("1", "#");
+          temp = temp.replaceAll("0", " ");
+          answer[i] = temp;
+      }
+
+      return answer;
+  }
 }
