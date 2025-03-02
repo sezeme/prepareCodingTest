@@ -9,10 +9,14 @@ class Solution {
                 attackPower[i*j]++;
             }
         }
-        int answer = Arrays.stream(attackPower).map( p -> {
-            if(p > limit) return power;
-            return p;
-        }).sum();
+        int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            if (attackPower[i] > limit) {
+                answer += power;
+            } else {
+                answer += attackPower[i];
+            }
+        }
         return answer;
     }
 }
