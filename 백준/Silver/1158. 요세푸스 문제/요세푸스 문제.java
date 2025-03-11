@@ -14,14 +14,15 @@ public class Main {
             q.offer(i);
         }
 
-        StringJoiner sj = new StringJoiner(", ", "<",">");
+        StringBuilder sb = new StringBuilder("<");
         while (!q.isEmpty()) {
             for (int i = 0; i < k-1; i++) {
                 q.offer(q.poll());
             }
-            sj.add(q.poll().toString());
+            sb.append(q.poll());
+            if(!q.isEmpty()) sb.append(", ");
         }
-
-        System.out.println(sj);
+        sb.append(">");
+        System.out.println(sb);
     }
 }
