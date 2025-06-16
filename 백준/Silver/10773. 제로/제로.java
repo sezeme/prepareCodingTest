@@ -1,37 +1,30 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
 import java.util.Stack;
 
-
 public class Main {
-
-    static Stack<Integer> stack = new Stack<>();
-
-    static int k;
-
-
+    static int K;
+    static Stack<Integer> stk;
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        k = Integer.parseInt(br.readLine());
-        for(int i = 0 ; i < k ; i++) {
-            int n = Integer.parseInt(br.readLine());
-            if(n == 0) {
-                stack.pop();
-            } else {
-                stack.push(n);
-            }
-        }
+        K = Integer.parseInt(br.readLine());
+        stk = new Stack<>();
 
-        Long sum = 0L;
-        while(!stack.isEmpty()) {
-            sum += stack.pop();
+        String input;
+        for(int i = 0; i < K; i++){
+            input = br.readLine();
+            if(input.equals("0")) stk.pop();
+            else stk.push(Integer.parseInt(input));
         }
-
+        
+        int sum = 0;
+        while(!stk.isEmpty()) {
+            sum += stk.pop();
+        }
+        
         System.out.println(sum);
 
     }
-
 }
+
